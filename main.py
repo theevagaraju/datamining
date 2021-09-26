@@ -400,154 +400,154 @@ dfs.drop(['date', 'state'], axis='columns', inplace=True)
 st.subheader("Features to indicate daily cases: ")
 st.success(choise_futureSelection)
 # --------------------------------------------------------
-if(choise_futureSelection=="Boruta classifier"):
-        states = st.selectbox("States ",("Pahang","Kedah","Johor","Selangor"))
-        if(states=="Pahang"):
-            y = dfs.state_Pahang
-            X = dfs.drop("state_Pahang", 1)
-            colnames = X.columns
-            rf = RandomForestClassifier(n_jobs=-1, class_weight="balanced", max_depth=5)
-            feat_selector = BorutaPy(rf, n_estimators='auto', random_state=1)
-            feat_selector.fit(X.values,y.values.ravel())
+# if(choise_futureSelection=="Boruta classifier"):
+#         states = st.selectbox("States ",("Pahang","Kedah","Johor","Selangor"))
+#         if(states=="Pahang"):
+#             y = dfs.state_Pahang
+#             X = dfs.drop("state_Pahang", 1)
+#             colnames = X.columns
+#             rf = RandomForestClassifier(n_jobs=-1, class_weight="balanced", max_depth=5)
+#             feat_selector = BorutaPy(rf, n_estimators='auto', random_state=1)
+#             feat_selector.fit(X.values,y.values.ravel())
 
-            boruta_score = ranking(list(map(float, feat_selector.ranking_)), colnames, order= -1)
-            boruta_score = pd.DataFrame(list(boruta_score.items()), columns=['Features','Score'])
-            boruta_score = boruta_score.sort_values("Score", ascending = False)
+#             boruta_score = ranking(list(map(float, feat_selector.ranking_)), colnames, order= -1)
+#             boruta_score = pd.DataFrame(list(boruta_score.items()), columns=['Features','Score'])
+#             boruta_score = boruta_score.sort_values("Score", ascending = False)
 
-            st.write('---------Top 10----------')
-            st.write(boruta_score.head(10))
+#             st.write('---------Top 10----------')
+#             st.write(boruta_score.head(10))
 
-            st.write('---------Bottom 10----------')
-            st.write(boruta_score.tail(10))
+#             st.write('---------Bottom 10----------')
+#             st.write(boruta_score.tail(10))
         
-        elif(states=="Kedah"):
-            y = dfs.state_Kedah
-            X = dfs.drop("state_Kedah", 1)
-            colnames = X.columns
-            rf = RandomForestClassifier(n_jobs=-1, class_weight="balanced", max_depth=5)
-            feat_selector = BorutaPy(rf, n_estimators='auto', random_state=1)
-            feat_selector.fit(X.values,y.values.ravel())
+#         elif(states=="Kedah"):
+#             y = dfs.state_Kedah
+#             X = dfs.drop("state_Kedah", 1)
+#             colnames = X.columns
+#             rf = RandomForestClassifier(n_jobs=-1, class_weight="balanced", max_depth=5)
+#             feat_selector = BorutaPy(rf, n_estimators='auto', random_state=1)
+#             feat_selector.fit(X.values,y.values.ravel())
 
-            boruta_score = ranking(list(map(float, feat_selector.ranking_)), colnames, order= -1)
-            boruta_score = pd.DataFrame(list(boruta_score.items()), columns=['Features','Score'])
-            boruta_score = boruta_score.sort_values("Score", ascending = False)
+#             boruta_score = ranking(list(map(float, feat_selector.ranking_)), colnames, order= -1)
+#             boruta_score = pd.DataFrame(list(boruta_score.items()), columns=['Features','Score'])
+#             boruta_score = boruta_score.sort_values("Score", ascending = False)
 
-            st.write('---------Top 10----------')
-            st.write(boruta_score.head(10))
+#             st.write('---------Top 10----------')
+#             st.write(boruta_score.head(10))
 
-            st.write('---------Bottom 10----------')
-            st.write(boruta_score.tail(10))
+#             st.write('---------Bottom 10----------')
+#             st.write(boruta_score.tail(10))
 
-        elif(states=="Johor"):
-            y = dfs.state_Johor
-            X = dfs.drop("state_Johor", 1)
-            colnames = X.columns
-            rf = RandomForestClassifier(n_jobs=-1, class_weight="balanced", max_depth=5)
-            feat_selector = BorutaPy(rf, n_estimators='auto', random_state=1)
-            feat_selector.fit(X.values,y.values.ravel())
+#         elif(states=="Johor"):
+#             y = dfs.state_Johor
+#             X = dfs.drop("state_Johor", 1)
+#             colnames = X.columns
+#             rf = RandomForestClassifier(n_jobs=-1, class_weight="balanced", max_depth=5)
+#             feat_selector = BorutaPy(rf, n_estimators='auto', random_state=1)
+#             feat_selector.fit(X.values,y.values.ravel())
 
-            boruta_score = ranking(list(map(float, feat_selector.ranking_)), colnames, order= -1)
-            boruta_score = pd.DataFrame(list(boruta_score.items()), columns=['Features','Score'])
-            boruta_score = boruta_score.sort_values("Score", ascending = False)
+#             boruta_score = ranking(list(map(float, feat_selector.ranking_)), colnames, order= -1)
+#             boruta_score = pd.DataFrame(list(boruta_score.items()), columns=['Features','Score'])
+#             boruta_score = boruta_score.sort_values("Score", ascending = False)
 
-            st.write('---------Top 10----------')
-            st.write(boruta_score.head(10))
+#             st.write('---------Top 10----------')
+#             st.write(boruta_score.head(10))
 
-            st.write('---------Bottom 10----------')
-            st.write(boruta_score.tail(10))
+#             st.write('---------Bottom 10----------')
+#             st.write(boruta_score.tail(10))
         
-        else:
-            y = dfs.state_Selangor
-            X = dfs.drop("state_Selangor", 1)
-            colnames = X.columns
-            rf = RandomForestClassifier(n_jobs=-1, class_weight="balanced", max_depth=5)
-            feat_selector = BorutaPy(rf, n_estimators='auto', random_state=1)
-            feat_selector.fit(X.values,y.values.ravel())
+#         else:
+#             y = dfs.state_Selangor
+#             X = dfs.drop("state_Selangor", 1)
+#             colnames = X.columns
+#             rf = RandomForestClassifier(n_jobs=-1, class_weight="balanced", max_depth=5)
+#             feat_selector = BorutaPy(rf, n_estimators='auto', random_state=1)
+#             feat_selector.fit(X.values,y.values.ravel())
 
-            boruta_score = ranking(list(map(float, feat_selector.ranking_)), colnames, order= -1)
-            boruta_score = pd.DataFrame(list(boruta_score.items()), columns=['Features','Score'])
-            boruta_score = boruta_score.sort_values("Score", ascending = False)
+#             boruta_score = ranking(list(map(float, feat_selector.ranking_)), colnames, order= -1)
+#             boruta_score = pd.DataFrame(list(boruta_score.items()), columns=['Features','Score'])
+#             boruta_score = boruta_score.sort_values("Score", ascending = False)
 
-            st.write('---------Top 10----------')
-            st.write(boruta_score.head(10))
+#             st.write('---------Top 10----------')
+#             st.write(boruta_score.head(10))
 
-            st.write('---------Bottom 10----------')
-            st.write(boruta_score.tail(10))
+#             st.write('---------Bottom 10----------')
+#             st.write(boruta_score.tail(10))
 
-elif(choise_futureSelection=="RFE classifier"):
+# elif(choise_futureSelection=="RFE classifier"):
 
-        states = st.selectbox("States ",("Pahang","Kedah","Johor","Selangor"))
-        if(states=="Pahang"):
-            y = dfs.state_Pahang
-            X = dfs.drop("state_Pahang", 1)
-            colnames = X.columns
-            rf = RandomForestClassifier(n_jobs=-1, class_weight="balanced", max_depth = 5, n_estimators = 100)
-            rf.fit(X, y)
-            rfe = RFECV(rf, min_features_to_select = 1, cv = 3)
-            rfe.fit(X,y)
-            rfe_score = ranking(list(map(float, rfe.ranking_)), colnames, order=-1)
-            rfe_score = pd.DataFrame(list(rfe_score.items()), columns=['Features', 'Score'])
-            rfe_score = rfe_score.sort_values("Score", ascending = False)
+#         states = st.selectbox("States ",("Pahang","Kedah","Johor","Selangor"))
+#         if(states=="Pahang"):
+#             y = dfs.state_Pahang
+#             X = dfs.drop("state_Pahang", 1)
+#             colnames = X.columns
+#             rf = RandomForestClassifier(n_jobs=-1, class_weight="balanced", max_depth = 5, n_estimators = 100)
+#             rf.fit(X, y)
+#             rfe = RFECV(rf, min_features_to_select = 1, cv = 3)
+#             rfe.fit(X,y)
+#             rfe_score = ranking(list(map(float, rfe.ranking_)), colnames, order=-1)
+#             rfe_score = pd.DataFrame(list(rfe_score.items()), columns=['Features', 'Score'])
+#             rfe_score = rfe_score.sort_values("Score", ascending = False)
 
-            st.write('---------Top 10----------')
-            st.write(rfe_score.head(10))
+#             st.write('---------Top 10----------')
+#             st.write(rfe_score.head(10))
 
-            st.write('---------Bottom 10----------')
-            st.write(rfe_score.tail(10))
+#             st.write('---------Bottom 10----------')
+#             st.write(rfe_score.tail(10))
         
-        elif(states=="Kedah"):
-            y = dfs.state_Kedah
-            X = dfs.drop("state_Kedah", 1)
-            colnames = X.columns
-            rf = RandomForestClassifier(n_jobs=-1, class_weight="balanced", max_depth = 5, n_estimators = 100)
-            rf.fit(X, y)
-            rfe = RFECV(rf, min_features_to_select = 1, cv = 3)
-            rfe.fit(X,y)
-            rfe_score = ranking(list(map(float, rfe.ranking_)), colnames, order=-1)
-            rfe_score = pd.DataFrame(list(rfe_score.items()), columns=['Features', 'Score'])
-            rfe_score = rfe_score.sort_values("Score", ascending = False)
+#         elif(states=="Kedah"):
+#             y = dfs.state_Kedah
+#             X = dfs.drop("state_Kedah", 1)
+#             colnames = X.columns
+#             rf = RandomForestClassifier(n_jobs=-1, class_weight="balanced", max_depth = 5, n_estimators = 100)
+#             rf.fit(X, y)
+#             rfe = RFECV(rf, min_features_to_select = 1, cv = 3)
+#             rfe.fit(X,y)
+#             rfe_score = ranking(list(map(float, rfe.ranking_)), colnames, order=-1)
+#             rfe_score = pd.DataFrame(list(rfe_score.items()), columns=['Features', 'Score'])
+#             rfe_score = rfe_score.sort_values("Score", ascending = False)
 
-            st.write('---------Top 10----------')
-            st.write(rfe_score.head(10))
+#             st.write('---------Top 10----------')
+#             st.write(rfe_score.head(10))
 
-            st.write('---------Bottom 10----------')
-            st.write(rfe_score.tail(10))
+#             st.write('---------Bottom 10----------')
+#             st.write(rfe_score.tail(10))
 
-        elif(states=="Johor"):
-            y = dfs.state_Johor
-            X = dfs.drop("state_Johor", 1)
-            colnames = X.columns
-            rf = RandomForestClassifier(n_jobs=-1, class_weight="balanced", max_depth = 5, n_estimators = 100)
-            rf.fit(X, y)
-            rfe = RFECV(rf, min_features_to_select = 1, cv = 3)
-            rfe.fit(X,y)
-            rfe_score = ranking(list(map(float, rfe.ranking_)), colnames, order=-1)
-            rfe_score = pd.DataFrame(list(rfe_score.items()), columns=['Features', 'Score'])
-            rfe_score = rfe_score.sort_values("Score", ascending = False)
+#         elif(states=="Johor"):
+#             y = dfs.state_Johor
+#             X = dfs.drop("state_Johor", 1)
+#             colnames = X.columns
+#             rf = RandomForestClassifier(n_jobs=-1, class_weight="balanced", max_depth = 5, n_estimators = 100)
+#             rf.fit(X, y)
+#             rfe = RFECV(rf, min_features_to_select = 1, cv = 3)
+#             rfe.fit(X,y)
+#             rfe_score = ranking(list(map(float, rfe.ranking_)), colnames, order=-1)
+#             rfe_score = pd.DataFrame(list(rfe_score.items()), columns=['Features', 'Score'])
+#             rfe_score = rfe_score.sort_values("Score", ascending = False)
 
-            st.write('---------Top 10----------')
-            st.write(rfe_score.head(10))
+#             st.write('---------Top 10----------')
+#             st.write(rfe_score.head(10))
 
-            st.write('---------Bottom 10----------')
-            st.write(rfe_score.tail(10))
+#             st.write('---------Bottom 10----------')
+#             st.write(rfe_score.tail(10))
         
-        else:
-            y = dfs.state_Selangor
-            X = dfs.drop("state_Selangor", 1)
-            colnames = X.columns
-            rf = RandomForestClassifier(n_jobs=-1, class_weight="balanced", max_depth = 5, n_estimators = 100)
-            rf.fit(X, y)
-            rfe = RFECV(rf, min_features_to_select = 1, cv = 3)
-            rfe.fit(X,y)
-            rfe_score = ranking(list(map(float, rfe.ranking_)), colnames, order=-1)
-            rfe_score = pd.DataFrame(list(rfe_score.items()), columns=['Features', 'Score'])
-            rfe_score = rfe_score.sort_values("Score", ascending = False)
+#         else:
+#             y = dfs.state_Selangor
+#             X = dfs.drop("state_Selangor", 1)
+#             colnames = X.columns
+#             rf = RandomForestClassifier(n_jobs=-1, class_weight="balanced", max_depth = 5, n_estimators = 100)
+#             rf.fit(X, y)
+#             rfe = RFECV(rf, min_features_to_select = 1, cv = 3)
+#             rfe.fit(X,y)
+#             rfe_score = ranking(list(map(float, rfe.ranking_)), colnames, order=-1)
+#             rfe_score = pd.DataFrame(list(rfe_score.items()), columns=['Features', 'Score'])
+#             rfe_score = rfe_score.sort_values("Score", ascending = False)
 
-            st.write('---------Top 10----------')
-            st.write(rfe_score.head(10))
+#             st.write('---------Top 10----------')
+#             st.write(rfe_score.head(10))
 
-            st.write('---------Bottom 10----------')
-            st.write(rfe_score.tail(10))
+#             st.write('---------Bottom 10----------')
+#             st.write(rfe_score.tail(10))
 
 # --------------------------------------------------------
 
