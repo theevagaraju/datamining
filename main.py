@@ -399,7 +399,7 @@ dfs.drop(['date', 'state'], axis='columns', inplace=True)
 #st.write(dfs.head())
 st.subheader("Features to indicate daily cases: ")
 st.success(choise_futureSelection)
---------------------------------------------------------
+# --------------------------------------------------------
 if(choise_futureSelection=="Boruta classifier"):
         states = st.selectbox("States ",("Pahang","Kedah","Johor","Selangor"))
         if(states=="Pahang"):
@@ -549,7 +549,7 @@ elif(choise_futureSelection=="RFE classifier"):
             st.write('---------Bottom 10----------')
             st.write(rfe_score.tail(10))
 
---------------------------------------------------------
+# --------------------------------------------------------
 
 
 # ---Selecting Classifier
