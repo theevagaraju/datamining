@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run euro.py
+web: sh setup.sh && streamlit run main.py
